@@ -4,6 +4,11 @@
 > Everything the other roles rely on is here, with its source. Never invent a figure: if the source is silent, write
 > "unknown" and say how it will be estimated.
 
+## 0. Summary and decisions to validate
+
+Five lines: the device, the proposed main source (and why), the level (Lite / Full), the versions decision, anything the
+owner must confirm (list it again in §8).
+
 ## 1. Sources
 
 | Source                      | Link | What it gives                               |
@@ -12,7 +17,10 @@
 | Maker / official data       |      | official dimensions, ratings, drawings      |
 | Other                       |      |                                             |
 
-Transcript: `docs/transcript.md` (use the `youtube-transcriber` skill).
+Transcript: `docs/transcript.md`, **private and git-ignored** (it reproduces a third-party video). `yt-dlp
+--skip-download --write-auto-subs --sub-langs "fr.*"` is a reliable way to get auto captions; they contain many
+recognition errors, numbers especially: check each figure against the video. Videos without captions: use the
+description and the chapters, and say so.
 
 ## 2. Key figures to reproduce
 
@@ -21,6 +29,9 @@ The simulation must retrieve these (one unit test each). `video` = timestamp in 
 | Quantity | Value | Unit | Conditions | Source / timestamp |
 | -------- | ----- | ---- | ---------- | ------------------ |
 |          |       |      |            |                    |
+
+**Sanity checks.** Recompute the energy / mass balance of every reported figure (does the machine give out more than it
+takes in?). A source whose numbers fail is not used for validation, and the research notes say so.
 
 ## 3. Official dimensions and data
 
@@ -49,3 +60,11 @@ version switch: raise it with the lead before building anything.
 
 Hazards of the device (fire, CO, gas, pressure, mains), the warning to show, the regulation that applies, credits for
 the video and the maker. The lab is an _independent educational reconstruction_, not an official drawing or product.
+
+## 8. Open questions for the owner
+
+Numbered, one line each, answerable with yes / no / a choice (main source, missing maker data, scope, presets, extras).
+
+## 9. Next steps
+
+Which waves follow, in what order; the lead asks the owner before launching a team.

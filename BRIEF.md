@@ -51,16 +51,16 @@ checkpoint. The kit has **no version switch yet**: do not build one inside the l
 
 Roles work in waves; a role only edits its own files and reads the others'.
 
-| Wave | Role               | Delivers                                                                                              | Files                                                       |
-| ---- | ------------------ | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| 1    | **Research**       | sources, transcript, key figures with timestamps, official dimensions, versions decision, safety      | `docs/research.md`, `docs/transcript.md`                    |
-| 1    | **Physics**        | simulation engine + a unit test per key figure of the source (the figures of the video are retrieved) | `src/sim/**` (engine, presets, scenarios, `*.test.ts`)      |
-| 2    | **Data**           | parts catalogue (20–35 parts), assembly / installation guide, lessons, lab UI strings                 | `src/data/**`, `src/i18n/ui.ts`                             |
-| 2    | **3D**             | dimensions (one source), the device and its worlds, explode offsets, hotspots, x-ray / cutaway rules  | `src/three/**` (with `dims.ts`)                             |
-| 3    | **Drawings**       | A3 sheets generated from `dims.ts`                                                                    | `src/drawings/**`                                           |
-| 3    | **Lessons & quiz** | the lessons and their scenarios (with the Physics role)                                               | `src/data/lessons.ts`                                       |
-| 4    | **QA**             | quality gates below, visual regression at 3 widths, FR/EN parity, mechanical plausibility review      | `tools/**`, a QA report in `docs/qa.md`                     |
-| all  | **Lead**           | integration in `src/lab.ts`, kit requests, owner checkpoint, deployment                               | `src/lab.ts`, `src/main.ts`, `README.md`, `public/lab.json` |
+| Wave | Role               | Delivers                                                                                                                       | Files                                                           |
+| ---- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
+| 1    | **Research**       | sources, transcript, key figures with timestamps, official dimensions, versions decision, safety, open questions for the owner | `docs/research.md`, `docs/transcript.md` (private, git-ignored) |
+| 1    | **Physics**        | simulation engine + a unit test per key figure of the source (the figures of the video are retrieved)                          | `src/sim/**` (engine, presets, scenarios, `*.test.ts`)          |
+| 2    | **Data**           | parts catalogue (20–35 parts), assembly / installation guide, lessons, lab UI strings                                          | `src/data/**`, `src/i18n/ui.ts`                                 |
+| 2    | **3D**             | dimensions (one source), the device and its worlds, explode offsets, hotspots, x-ray / cutaway rules                           | `src/three/**` (with `dims.ts`)                                 |
+| 3    | **Drawings**       | A3 sheets generated from `dims.ts`                                                                                             | `src/drawings/**`                                               |
+| 3    | **Lessons & quiz** | the lessons and their scenarios (with the Physics role)                                                                        | `src/data/lessons.ts`                                           |
+| 4    | **QA**             | quality gates below, visual regression at 3 widths, FR/EN parity, mechanical plausibility review                               | `tools/**`, a QA report in `docs/qa.md`                         |
+| all  | **Lead**           | integration in `src/lab.ts`, kit requests, owner checkpoint, deployment                                                        | `src/lab.ts`, `src/main.ts`, `README.md`, `public/lab.json`     |
 
 Waves: 1 research + physics → 2 3D ‖ data (in parallel) → 3 drawings ‖ lessons → 4 QA → **checkpoint with the owner** →
 fixes → deploy. The data role and the 3D role agree on part ids first (a short list in `docs/research.md` §4): an id in
@@ -99,6 +99,8 @@ fixes → deploy. The data role and the 3D role agree on part ids first (a short
 - [ ] warnings where useful: fire, carbon monoxide, gas, pressure, mains electricity; the legal note for the country;
 - [ ] "independent educational reconstruction" notice, **credit and link** to the source video and the maker; no footage
       or images taken from the video;
+- [ ] no transcript or caption of a third-party video committed (`docs/transcript*.md` is git-ignored: summarise and
+      cite with timestamps instead);
 - [ ] `public/lab.json` filled (title, tagline, tags, difficulty, minutes) for the portfolio hub;
 - [ ] README with the English version first and the French one at the end.
 
