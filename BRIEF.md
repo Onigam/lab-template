@@ -103,6 +103,9 @@ fixes → deploy. The data role and the 3D role agree on part ids first (a short
       cite with timestamps instead);
 - [ ] `public/lab.json` filled (title, tagline, tags, difficulty, minutes) for the portfolio hub;
 - [ ] README with the English version first and the French one at the end.
+- [ ] **if the lab has a spoken guide** (only once the owner asks for it, after the checkpoint): its script follows
+      `lab-kit/docs/narration-style.md` (Pelton Lab's tone is the standard), `tone-stats.mjs` is run against Pelton's, the
+      lab's narration test and `check-narration.mjs` pass, and no credit is spent before the owner says yes.
 
 ## 7. Lessons learned on Pelton Lab (the owner reviews closely)
 
@@ -113,6 +116,9 @@ fixes → deploy. The data role and the 3D role agree on part ids first (a short
 4. Check the layout at three widths: a panel and its tabs were broken on a narrow screen.
 5. Visual and numerical consistency is verified with a script, not by eye alone.
 6. Deploy early, loop short: the owner tests quickly and gives precise feedback.
+7. The spoken guide is not part of the first delivery: it comes after the owner's checkpoint, on request, from the final part
+   sheets. Read `lab-kit/docs/narration-style.md` first (voice, register, anonymity, honesty, budget, process) and use
+   `pelton-lab/narration/fr.json` as the model: the owner judged its tone perfect.
 
 ## 8. When you are stuck
 
