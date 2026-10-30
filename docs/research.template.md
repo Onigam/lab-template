@@ -6,7 +6,7 @@
 
 ## 0. Summary and decisions to validate
 
-Five lines: the device, the proposed main source (and why), the level (Lite / Full), the versions decision, anything the
+Five lines: the device, the proposed main source (and why), the plan against the lab standard (worlds, parts, drawings, spoken guide) and its cost, the versions decision, anything the
 owner must confirm (list it again in §8).
 
 ## 1. Sources
@@ -44,7 +44,7 @@ List the official ones here first; estimates are marked as such.
 
 ## 4. Parts list (draft)
 
-20–35 parts for a Lite lab: id, name FR/EN, category, what it does.
+At least 36 parts across at least 4 worlds (the lab standard): id, name FR/EN, category, what it does.
 
 ## 5. Physics
 

@@ -10,12 +10,15 @@ An educational web app where a visitor can: see the whole device in 3D and in it
 part, take it apart and put it back, follow a part-by-part assembly guide, run a live simulation with editable
 parameters, read A3 design drawings and short lessons with a quiz. Everything is bilingual **French / English**.
 
-| Level              | Scope                                                                                                                    |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| **Lite** (default) | 1 device + 1 setting, 20–35 parts, modes Explore / Assembly / Simulation, 3 drawings, 5 lessons. ≈ 8–12 k lines          |
-| **Full**           | adds more worlds, 8–10 drawings, 12–14 lessons (only the flagship labs: Pelton, Piggott, mass heater, bioclimatic house) |
-
-The lab's `docs/research.md` says which level it is. Ship Lite first, deploy, get the owner's feedback, then enrich.
+**There is one bar, not levels.** A lab is only "livré" when it meets the lab standard
+([`lab-kit/docs/lab-standard.md`](https://github.com/Onigam/lab-kit/blob/main/docs/lab-standard.md), checked by `src/standard.ts` and
+`src/standard.test.ts` of this repo): **4 3D worlds** (the setting, the machine, at least two detailed sub-assemblies or rooms), **36
+parts** with a sheet, assembly guide of **20 steps** and installation guide of **10**, **6 lessons** with **12 quiz questions**, **8 A3
+drawings**, a **spoken guide in French and English** (one segment for the introduction, one per world, one per part), README in English
+then French, `public/lab.json` filled. `public/lab.json` carries `"status"`: `"building"` (the default: `npm test` lists every shortfall
+as a todo) until the bar is met and the owner says yes, then `"released"` (a shortfall fails the test and the CI). Never write "finished"
+before `released`. Plan the work against the bar from the first day; the lab's `docs/research.md` §0 states the plan and its cost.
+Build in waves and deploy early, but the waves end at the bar, not before.
 
 ## 2. The frame is locked (non-negotiable)
 
