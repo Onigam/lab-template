@@ -62,7 +62,7 @@ Roles work in waves; a role only edits its own files and reads the others'.
 | 2    | **3D**             | dimensions (one source), the device and its worlds, explode offsets, hotspots, x-ray / cutaway rules                           | `src/three/**` (with `dims.ts`)                                 |
 | 3    | **Drawings**       | A3 sheets generated from `dims.ts`                                                                                             | `src/drawings/**`                                               |
 | 3    | **Lessons & quiz** | the lessons and their scenarios (with the Physics role)                                                                        | `src/data/lessons.ts`                                           |
-| 4    | **QA**             | quality gates below, visual regression at 3 widths, FR/EN parity, mechanical plausibility review                               | `tools/**`, a QA report in `docs/qa.md`                         |
+| 4    | **QA**             | quality gates below and the review of `lab-kit/docs/lab-quality.md` (never by an agent that built the lab), 3 widths, FR/EN    | `tools/**`, a QA report in `docs/qa.md`                         |
 | all  | **Lead**           | integration in `src/lab.ts`, kit requests, owner checkpoint, deployment                                                        | `src/lab.ts`, `src/main.ts`, `README.md`, `public/lab.json`     |
 
 Waves: 1 research + physics → 2 3D ‖ data (in parallel) → 3 drawings ‖ lessons → 4 QA → **checkpoint with the owner** →
@@ -106,22 +106,37 @@ fixes → deploy. The data role and the 3D role agree on part ids first (a short
       cite with timestamps instead);
 - [ ] `public/lab.json` filled (title, tagline, tags, difficulty, minutes) for the portfolio hub;
 - [ ] README with the English version first and the French one at the end.
-- [ ] **if the lab has a spoken guide** (only once the owner asks for it, after the checkpoint): its script follows
+- [ ] **quality and detail**: every rule of
+      [`lab-kit/docs/lab-quality.md`](https://github.com/Onigam/lab-kit/blob/main/docs/lab-quality.md) checked by a reviewer
+      who did not build the lab (close-ups of every part in every world, every mode at three widths in both languages), report
+      in `docs/qa.md`; the owner's past finds listed there would all have been caught;
+- [ ] **the spoken guide** (part of the bar, written after the checkpoint from the final part sheets): its script follows
       `lab-kit/docs/narration-style.md` (Pelton Lab's tone is the standard), `tone-stats.mjs` is run against Pelton's, the
-      lab's narration test and `check-narration.mjs` pass, and no credit is spent before the owner says yes.
+      lab's narration test and `check-narration.mjs` pass, no credit is spent before the owner says yes, and the audio is
+      transcribed back and compared with the script before the owner listens.
 
-## 7. Lessons learned on Pelton Lab (the owner reviews closely)
+## 7. Lessons learned (the owner reviews closely)
+
+The full list, with how to check each rule and where it came from, is
+[`lab-kit/docs/lab-quality.md`](https://github.com/Onigam/lab-kit/blob/main/docs/lab-quality.md). Read it before modelling.
 
 1. Mechanical plausibility is checked: a spring "floating in the void" or a misaligned base was noticed at once. Every
-   moving part must visibly connect to what drives it.
+   moving part must visibly connect to what drives it; nothing floats, nothing sinks into the ground.
 2. Official data before modelling; one source of dimensions; ratings and torques identical across data, drawings and 3D.
 3. Fast rotations look like they run backwards (wagon-wheel effect): cap the visual speed and add a blur disc.
 4. Check the layout at three widths: a panel and its tabs were broken on a narrow screen.
 5. Visual and numerical consistency is verified with a script, not by eye alone.
 6. Deploy early, loop short: the owner tests quickly and gives precise feedback.
-7. The spoken guide is not part of the first delivery: it comes after the owner's checkpoint, on request, from the final part
-   sheets. Read `lab-kit/docs/narration-style.md` first (voice, register, anonymity, honesty, budget, process) and use
+7. The spoken guide is part of the bar but comes last: after the owner's checkpoint, from the final part sheets. Read
+   `lab-kit/docs/narration-style.md` first (voice, register, anonymity, honesty, budget, process) and use
    `pelton-lab/narration/fr.json` as the model: the owner judged its tone perfect.
+8. A machine shown in two worlds is the same machine (same build function, same dimensions), never redrawn simpler (Mill
+   Lab's site showed a box where its screw world has a chain and a belt). Every system a visitor can name gets a place to
+   look at it (Piggott Lab had no view of its equipment room and battery).
+9. Every prop reads as what it is, close up and from afar (Mill Lab's willow looked like a jellyfish), and the water
+   follows the physics wherever the physics says something.
+10. The simulation is never tuned to print the source's figures: when it disagrees, say so and why. Warnings are said
+    once, where they matter, not on every figure.
 
 ## 8. When you are stuck
 
