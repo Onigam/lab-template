@@ -58,12 +58,17 @@ Roles work in waves; a role only edits its own files and reads the others'.
 | ---- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
 | 1    | **Research**       | sources, transcript, key figures with timestamps, official dimensions, versions decision, safety, open questions for the owner | `docs/research.md`, `docs/transcript.md` (private, git-ignored) |
 | 1    | **Physics**        | simulation engine + a unit test per key figure of the source (the figures of the video are retrieved)                          | `src/sim/**` (engine, presets, scenarios, `*.test.ts`)          |
-| 2    | **Data**           | parts catalogue (20–35 parts), assembly / installation guide, lessons, lab UI strings                                          | `src/data/**`, `src/i18n/ui.ts`                                 |
+| 2    | **Data**           | parts catalogue (36 parts at least), assembly / installation guide, lessons, lab UI strings                                    | `src/data/**`, `src/i18n/ui.ts`                                 |
 | 2    | **3D**             | dimensions (one source), the device and its worlds, explode offsets, hotspots, x-ray / cutaway rules                           | `src/three/**` (with `dims.ts`)                                 |
 | 3    | **Drawings**       | A3 sheets generated from `dims.ts`                                                                                             | `src/drawings/**`                                               |
 | 3    | **Lessons & quiz** | the lessons and their scenarios (with the Physics role)                                                                        | `src/data/lessons.ts`                                           |
 | 4    | **QA**             | quality gates below and the review of `lab-kit/docs/lab-quality.md` (never by an agent that built the lab), 3 widths, FR/EN    | `tools/**`, a QA report in `docs/qa.md`                         |
 | all  | **Lead**           | integration in `src/lab.ts`, kit requests, owner checkpoint, deployment                                                        | `src/lab.ts`, `src/main.ts`, `README.md`, `public/lab.json`     |
+
+**Each role has a dedicated agent** (sources in [`lab-kit/agents/`](https://github.com/Onigam/lab-kit/tree/main/agents),
+installed in `~/.claude/agents/`): `lab-researcher` (research), `lab-physicist` (physics), `lab-modeler` (3D), `lab-author`
+(data, drawings, lessons and quiz), `lab-narrator` (the spoken guide, never spends credits) and `lab-reviewer` (QA: the
+independent walk, never on a lab it built). The lead uses them rather than general-purpose agents.
 
 Waves: 1 research + physics → 2 3D ‖ data (in parallel) → 3 drawings ‖ lessons → 4 QA → **checkpoint with the owner** →
 fixes → deploy. The data role and the 3D role agree on part ids first (a short list in `docs/research.md` §4): an id in
