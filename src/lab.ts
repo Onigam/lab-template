@@ -17,7 +17,7 @@ configureDrawings({ project: { fr: 'LAB TEMPLATE — dispositif', en: 'LAB TEMPL
 
 export const lab: LabDefinition<DemoSim> = {
   id: 'lab-template',
-  brand: { title: 'LAB TEMPLATE', tagline: strL('tagline'), icon: './favicon.svg' },
+  brand: { title: 'LAB TEMPLATE', tagline: strL('tagline') },
   sim: new DemoSim(),
   defaultScene: 'device',
   parts: PARTS,
